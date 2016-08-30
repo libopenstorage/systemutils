@@ -39,7 +39,7 @@ func getCPUSample() (idle, total uint64) {
 	lines := strings.Split(string(contents), "\n")
 	for _, line := range lines {
 		fields := strings.Fields(line)
-		if fields[0] == "cpu" {
+		if len(fields) > 0 && fields[0] == "cpu" {
 			numFields := len(fields)
 			for i := 1; i < numFields; i++ {
 				val, err := strconv.ParseUint(fields[i], 10, 64)
